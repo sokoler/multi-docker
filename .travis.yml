@@ -23,3 +23,14 @@ after_success:
   - docker push sokoler/multi-server
   - docker push sokoler/multi-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: multi_docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-central-1-890646895555
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
